@@ -1,24 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
-    <div id="container">
-        <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
-              </tr>
-            </thead>
-        </table>
+  <div class="container">
+    <div class="filter">
+      <label>id:</label>
+      <input id="id-filter" type="text">
+      <label>name:</label>
+      <input id="name-filter" type="text">
+      <button id="search" >Search</button>
     </div>
-    <script src="./js/script.js"></script>
+
+    <table class="user-data">
+
+
+    </table>
+  </div>
+  <script src="./js/script.js"></script>
 </body>
+
 </html>

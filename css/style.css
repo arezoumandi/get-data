@@ -1,0 +1,63 @@
+body{
+    font-family: Inconsolata,Menlo,Consolas,monospace;
+}
+
+.filter{
+    position: absolute;
+    left: 40px;
+    top:20px;
+    border-radius: 5px;
+    height: 30px;
+}
+
+.filter input{
+    border-radius: 5px;
+    border: 1px solid #aaaaaa;
+    height: 25px;
+    margin-right: 10px;
+
+}
+
+.filter button{
+    border-radius: 5px;
+    border: 0 ;
+    background-color:#25bca3  ;
+    box-shadow: 5px 5px 20px -5px #aaaaaa;
+    color: #ffffff;
+    width: 100px;
+    height: 30px;
+
+}
+
+.filter button:hover{
+    background-color: #1c9d88 ;
+}
+.container{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    box-shadow: 10px 10px 20px -5px #aaaaaa;
+    top:200px;
+}
+
+.user-data{
+    margin-top: 50px;
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.user-data th{ 
+    color: rgba(5, 75, 0, 0.851);
+    font-size: 18px;
+    padding: 20px 0;
+}
+
+
+.rows td{
+    /* background-color: red; */
+    padding: 10px;
+    text-align: center;
+    /* border: 1px solid black; */
+    /* border-bottom: 1px solid black; */
+}

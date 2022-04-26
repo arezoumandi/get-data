@@ -1,23 +1,88 @@
 
 window.addEventListener('DOMContentLoaded', datafetch);
+let el = document.querySelector(".user-data");
+uri = 'http://localhost:3000/users'
 
 
-function datafetch()
-{
-    fetch('http://localhost:3000/users')
+document.getElementById("search").addEventListener('click', filter)
+
+function datafetch() {
+    let temp = `
+        <tr>
+            <th>id</th>
+            <th>username</th>
+            <th>name</th>
+            <th>phome</th>
+            <th>email</th>
+        </tr>`;
+    fetch(uri)
         .then((response) => {
-            return(response.json());
+            console.log(response)
+            return (response.json());
         })
-        .then((data)=>{
-            data.forEach(d => {
-               document.getElementById("container").innerHTML+= d.id+" : " ;
-               document.getElementById("container").innerHTML+= `username: ${d.username}  &nbsp &nbsp &nbsp &nbsp &nbsp , `;
-               document.getElementById("container").innerHTML+= `name: ${d.name}&nbsp &nbsp &nbsp &nbsp &nbsp, `;
-               document.getElementById("container").innerHTML+= `phone number: ${d.phone}&nbsp &nbsp &nbsp &nbsp &nbsp, `;
-               document.getElementById("container").innerHTML+= `Email: ${d.email} , </br>  `;
+        .then((data) => {
+            data.forEach(user => {
+                temp += `
+                    <tr class=rows>
+                        <td>${user.id}</td>
+                        <td>${user.usernam}</td>
+                        <td>${user.name}</td>
+                        <td>${user.phone}</td>
+                        <td>${user.email}</td>
+                    </tr>
+                
+                
+                `
+                el.innerHTML = temp;
+
 
             });
-            // document.getElementById("container").innerHTML+=JSON.parse(JSON.stringify(data));
-            // console.log(data);
+
         });
+
+        fetch("http://localhost:3000/users?_page=2&_limit=7").then((response)=>{
+            return response;
+        });
+}
+
+function filter() {
+    let temp = `
+        <tr>
+            <th>id</th>
+            <th>username</th>
+            <th>name</th>
+            <th>phome</th>
+            <th>email</th>
+        </tr>`;
+    let id = document.getElementById("id-filter").value;
+    let name = document.getElementById("name-filter").value;
+    let filterUrl = uri + "?";
+    if (id) {
+        filterUrl += `id=${id}`
+    }
+    if (name) {
+        filterUrl += `&name_like=${name}`;
+    }
+    fetch(filterUrl).then((response) => {
+        return (response.json());
+    }).then((result) => {
+       if(( Object.keys( result ).length )>0) {
+
+           result.forEach(user => {
+               temp += `
+                   <tr class=rows>
+                       <td>${user.id}</td>
+                       <td>${user.usernam}</td>
+                       <td>${user.name}</td>
+                       <td>${user.phone}</td>
+                       <td>${user.email}</td>
+                   </tr>                        
+               `
+              
+           });
+       }else{
+        temp += "";
+       }
+       el.innerHTML = temp;
+    });
 }
