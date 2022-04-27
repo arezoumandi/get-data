@@ -1,10 +1,22 @@
 
 window.addEventListener('DOMContentLoaded', datafetch);
 let el = document.querySelector(".user-data");
-uri = 'http://localhost:3000/users'
+uri = 'http://localhost:3000/users';
 
 
 document.getElementById("search").addEventListener('click', filter)
+document.getElementById("id-filter").addEventListener('keydown',function(event){
+    if (event.key === "Enter")
+    {
+        filter()
+    }
+})
+document.getElementById("name-filter").addEventListener('keydown',function(event){
+    if (event.key === "Enter")
+    {
+        filter();
+    }
+})
 
 function datafetch() {
     let temp = `
@@ -85,4 +97,6 @@ function filter() {
        }
        el.innerHTML = temp;
     });
+    id="";
+    name="";
 }
