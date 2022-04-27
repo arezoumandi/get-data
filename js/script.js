@@ -29,7 +29,6 @@ function datafetch() {
         </tr>`;
     fetch(uri)
         .then((response) => {
-            console.log(response)
             return (response.json());
         })
         .then((data) => {
@@ -41,15 +40,10 @@ function datafetch() {
                         <td>${user.name}</td>
                         <td>${user.phone}</td>
                         <td>${user.email}</td>
-                    </tr>
-                
-                
+                    </tr>              
                 `
                 el.innerHTML = temp;
-
-
             });
-
         });
 
         fetch("http://localhost:3000/users?_page=2&_limit=7").then((response)=>{
